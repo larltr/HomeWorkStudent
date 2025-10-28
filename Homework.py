@@ -9,7 +9,6 @@ def load_students():
             return json.load(f)
     return []
 
-# Функция для сохранения списка студентов в файл.
 def save_students(students):
     with open(FILENAME, "w", encoding="utf-8") as f:
         json.dump(students, f, ensure_ascii=False,
