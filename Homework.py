@@ -62,6 +62,24 @@ def show_students(students):
         for i, s in enumerate(students, start=1):
             print(f"{i}. {s}")
 
+def search_by_name(students):
+        query = input("Введите имя или часть имени для поиска: ").strip().capitalize()
+        found = [s for s in students if s.startswith(query)]
+        if found:
+            print("Найденные студенты:")
+            for i, s in enumerate(found, start=1):
+                print(f"{i}. {s}")
+        else:
+            print("Совпадений не найдено.")
+
+def sort(students):
+    students.sort()
+    show_students(students)
+    save_students(students)
+
+def quantity(students):
+    print("Количество студентов:", len(students))
+
 def main():
     students = load_students()
 
@@ -72,6 +90,9 @@ def main():
         print("3) Удалить студента по имени")
         print("4) Удалить студента по индексу")
         print("5) Показывать всех студентов")
+        print("6) Найти студента по имени:")
+        print("7) Сортировка по имени:")
+        print("8) Количество студентов:")
         print("0) Выход")
 
         command = input("\nВыберите команду: ").strip()
@@ -86,6 +107,12 @@ def main():
             delete_student_index(students)
         elif command == "5":
             show_students(students)
+        elif command == "6":
+            search_by_name(students)
+        elif command == "7":
+            sort(students)
+        elif command == "8":
+            quantity(students)
         elif command == "0":
             save_students(students)
             print("Программа завершена.")
